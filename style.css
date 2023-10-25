@@ -1,0 +1,114 @@
+*{
+    background-color: rgb(36, 36, 36);
+    color: white;
+}
+
+header{
+    text-align: center;
+    padding: 5pt 0;
+}
+
+#logo{
+    color: orange;
+}
+
+header nav{
+    margin: 10pt 0;
+}
+
+header nav a{
+    text-decoration: none;
+    color: white;
+    padding: 5pt 15pt;
+    margin: 5pt;
+}
+
+#active, header nav a:hover{
+    color: orange;
+    border-bottom: 1pt solid orange;
+}
+
+.box{
+    border: 1pt solid white;
+    border-radius: 15pt;
+    padding: 15pt;
+    text-align: center;
+    margin-top: 30pt;
+}
+
+.box table{
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+}
+
+.box table tr{
+    border-bottom: 0.5pt solid white;
+}
+
+.box table tr th, .box table tr td{
+    padding-top: 5pt;
+}
+
+.box a{
+    text-decoration: none;
+    color: white;
+}
+
+/*.box a:hover{
+    color: orange;
+}*/
+
+.start{
+    padding: 3pt 10pt;
+    border: none;
+    border-radius: 15pt;
+    background-color: green;
+}
+
+.start:hover{
+    background-color: lightgreen;
+    color: white;
+}
+
+.stop{
+    padding: 3pt 10pt;
+    border: none;
+    border-radius: 15pt;
+    background-color: red;
+}
+
+.stop:hover{
+    background-color: rgb(255, 43, 43);
+    color: white;
+}
+
+.mount{
+    padding: 3pt 10pt;
+    border: none;
+    border-radius: 15pt;
+    background-color: orange;
+    color: white;
+    margin: 30pt 0;
+}
+
+.mount:hover{
+    background-color: rgb(255, 189, 68);
+    color: white;
+}
+
+.back{
+    margin-top: 50pt;
+    padding: 3pt 10pt;
+    border: none;
+    border-radius: 15pt;
+    background-color: gray;
+    color: white;
+    text-decoration: none;
+}
+
+.back:hover{
+    background-color: lightgray;
+    color: white;
+    text-decoration: none;
+}
