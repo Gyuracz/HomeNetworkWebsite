@@ -18,6 +18,7 @@
                             <nav>
                                 <a href="./index.php" id="active">Main page</a>
                                 <a href="./services.php">Services</a>
+                                <a href="./cronjobs.php">Cron jobs</a>
                                 <a href="./temperature.php">Temperature</a>
                             </nav>
                         </div>

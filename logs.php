@@ -22,6 +22,7 @@
                             <nav>
                                 <a href="./index.php">Main page</a>
                                 <a href="./services.php" id="active">Services</a>
+                                <a href="./cronjobs.php">Cron jobs</a>
                                 <a href="./temperature.php">Temperature</a>
                             </nav>
                         </div>
@@ -41,7 +42,7 @@
                             </h2>
                             <div>
                                 <?php
-                                    exec("journalctl -u " . $service . " 2>&1", $logs);
+                                    exec("cat /var/log/syslog | grep " . $service . " 2>&1", $logs);
                                     $logs = array_reverse($logs);
                                     foreach($logs as $it){
                                         echo $it . "<br>";
