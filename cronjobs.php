@@ -32,6 +32,26 @@
                 </div>
         </header>
 
+        <?php
+            $file = fopen("./drop_cache_log.csv", "r") or die("Unable to open file!");
+            $cacheData = array();
+            while(!feof($file)){
+                array_push($cacheData, fgets($file));
+            }
+            $cacheData = array_reverse($cacheData);
+            $actualCacheData = explode(";", $cacheData[1]);     // A 0. sor üres, mert a fájl végén van egy üres sor.
+            fclose($file);
+
+            $file = fopen("./auto_remount_log.csv", "r") or die("Unable to open file!");
+            $remountData = array();
+            while(!feof($file)){
+                array_push($remountData, fgets($file));
+            }
+            $remountData = array_reverse($remountData);
+            $actualRemountData = explode(";", $remountData[1]); // A 0. sor üres, mert a fájl végén van egy üres sor.
+            fclose($file);
+        ?>
+
         <section class="container-fluid">
             <div class="container">
                 <div class="row">
@@ -41,19 +61,26 @@
                             <table>
                                 <tr>
                                     <th>Cron job</th>
-                                    <th>Script</th>
+                                    <th>Script location</th>
                                     <th>Last run</th>
+                                    <th>Message</th>
+                                    <th>View logs</th>
                                 </tr>
                                 <tr>
                                     <td>Drop cached memory</td>
                                     <td>/home/admin/drop_cache.sh</td>
                                     <td>
                                         <?php
-                                            // echo exec("cat /var/log/syslog | grep -E '(drop_cache.sh\))$' | tail -n 1 | awk '{print $1,$2,$3}'");
-                                            $file = fopen("./drop_cache_ts.txt", "r") or die("Unable to open file!");
-                                            echo fread($file, filesize("./drop_cache_ts.txt"));
-                                            fclose($file);
+                                            echo $actualCacheData[0];
                                         ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            echo $actualCacheData[1];
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <a href="cronlogs.php?cronjob=drop_cache_log" class="mount">View logs</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -61,11 +88,16 @@
                                     <td>/home/admin/auto_remount.sh</td>
                                     <td>
                                         <?php
-                                            // echo exec("cat /var/log/syslog | grep -E '(auto_remount.sh\))$' | tail -n 1 | awk '{print $1,$2,$3}'");
-                                            $file = fopen("./auto_remount_ts.txt", "r") or die("Unable to open file!");
-                                            echo fread($file, filesize("./auto_remount_ts.txt"));
-                                            fclose($file);
+                                            echo $actualRemountData[0];
                                         ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            echo $actualRemountData[1];
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <a href="cronlogs.php?cronjob=auto_remount_log" class="mount">View logs</a>
                                     </td>
                                 </tr>
                             </table>
